@@ -2,4 +2,4 @@ jobs:
   main:
     image: node:14
     steps:
-      - echo: echo $SD_TOKEN
+      - set: set
