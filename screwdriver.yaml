@@ -1,5 +1,6 @@
 jobs:
   main:
+    requires: ~release
     image: node:14
     steps:
       - set: set
