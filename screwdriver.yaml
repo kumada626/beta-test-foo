@@ -1,6 +1,6 @@
 jobs:
   main:
-    requires: ~release
+    requires: ~commit
     image: node:14
     steps:
-      - set: set
+      - set: sd-cmd exec kumada626/test-command@latest
