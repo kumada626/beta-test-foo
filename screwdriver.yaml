@@ -3,4 +3,6 @@ jobs:
     requires: ~commit
     image: node:14
     steps:
-      - set: echo $SD_PRIVATE_PIPELINE
+      - set: |
+          echo $SD_PRIVATE_PIPELINE
+          echo $CONTAINER_CPU_LIMIT
