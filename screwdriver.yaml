@@ -3,4 +3,4 @@ jobs:
     requires: ~commit
     image: node:14
     steps:
-      - set: sd-cmd exec kumada626/test-command@latest
+      - set: echo $SD_PRIVATE_PIPELINE
