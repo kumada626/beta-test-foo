@@ -1,6 +1,6 @@
 jobs:
   main:
-    requires: ~commit
+    requires: [ ~commit, ~pr ]
     image: node:14
     steps:
       - set: |
