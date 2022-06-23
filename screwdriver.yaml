@@ -6,3 +6,8 @@ jobs:
       - set: |
           echo $SD_PRIVATE_PIPELINE
           echo $CONTAINER_CPU_LIMIT
+  next:
+    requires: main
+    image: node:16
+    steps:
+      - echo: echo hi
