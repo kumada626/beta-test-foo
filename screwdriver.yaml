@@ -1,4 +1,8 @@
 jobs:
   main:
     requires: [ ~commit, ~pr ]
-    template: screwdriver-cd-test/test-trusted-template@1.0.144
+    image: node:14
+    steps:
+      - set: |
+          echo $SD_PRIVATE_PIPELINE
+          echo $CONTAINER_CPU_LIMIT
