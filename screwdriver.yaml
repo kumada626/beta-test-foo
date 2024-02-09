@@ -6,3 +6,13 @@ jobs:
       - set: |
           echo $SD_PRIVATE_PIPELINE
           echo $CONTAINER_CPU_LIMIT
+  second:
+    requires: [ ~commit ]
+    image: node:20
+    parameters:
+      region:
+        value: "JP"
+        description: "Region setting"
+      cluster: ["cluster1", "cluster2"]
+    steps:
+      - echo: echo foo
