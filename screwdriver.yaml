@@ -1,18 +1,106 @@
+shared:
+  image: node:18
 jobs:
+  detouched:
+    steps:
+      - echo hi
   main:
-    requires: [ ~commit, ~pr ]
-    image: node:14
-    steps:
-      - set: |
-          echo $SD_PRIVATE_PIPELINE
-          echo $CONTAINER_CPU_LIMIT
-  second:
     requires: [ ~commit ]
-    image: node:20
-    parameters:
-      region:
-        value: "JP"
-        description: "Region setting"
-      cluster: ["cluster1", "cluster2"]
     steps:
-      - echo: echo foo
+      - echo foo
+  main1:
+    requires: [ main ]
+    steps:
+      - echo foo
+  main2:
+    requires: [ main1 ]
+    steps:
+      - echo foo
+  main3:
+    requires: [ main2 ]
+    steps:
+      - echo foo
+  main4:
+    requires: [ main3 ]
+    steps:
+      - echo foo
+  main5:
+    requires: [ main4 ]
+    steps:
+      - echo foo
+  main6:
+    requires: [ main5 ]
+    steps:
+      - echo foo
+  main7:
+    requires: [ main6 ]
+    steps:
+      - echo foo
+  main8:
+    requires: [ main7 ]
+    steps:
+      - echo foo
+  main9:
+    requires: [ main8 ]
+    steps:
+      - echo foo
+  main10:
+    requires: [ main9 ]
+    steps:
+      - echo foo
+  main11:
+    requires: [ main10 ]
+    steps:
+      - echo foo
+  main12:
+    requires: [ main11 ]
+    steps:
+      - echo foo
+  main13:
+    requires: [ main12 ]
+    steps:
+      - echo foo
+  main14:
+    requires: [ main13 ]
+    steps:
+      - echo foo
+  parallel0:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel1:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel2:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel3:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel4:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel5:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel6:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel7:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel8:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
+  parallel9:
+    requires: [ ~commit ]
+    steps:
+      - echo foo
