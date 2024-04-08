@@ -1,14 +1,1 @@
-shared:
-  image: node:18
-jobs:
-  detouched:
-    steps:
-      - echo hi
-  main:
-    requires: [ ~commit ]
-    steps:
-      - echo foo
-  main1:
-    requires: [ main ]
-    steps:
-      - echo foo
+template: kumada626/sd-kumada626-pipeline-template@latest
