@@ -1,1 +1,26 @@
-template: kumada626/sd-kumada626-pipeline-template@latest
+shared:
+  image: node:20
+jobs:
+  job1:
+    requires: [ ~commit ]
+    steps:
+      - sleep: sleep 60
+  # jobA:
+  #   requires: [ ~commit ]
+  #   steps:
+  #     - echo jobA
+  # jobB:
+  #   requires: [ ~commit ]
+  #   steps:
+  #     - echo jobB
+  job2:
+    requires: [ ~commit ]
+    steps:
+      - echo: |
+          echo $SD_PARENT_EVENT_ID
+          if [ "$SD_PARENT_EVENT_ID" = "0" ]; then exit 1; fi
+          echo foo
+  job4:
+    requires: [ job2, job1 ]
+    steps:
+      - echo: echo job4
