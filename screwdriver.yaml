@@ -1,1 +1,13 @@
-template: kumada626/sd-kumada626-pipeline-template@latest
+template: ibu-test/sd-ibu-pipeline-template@1.0.4
+shared:
+  image: node:20
+jobs:
+  main:
+    settings:
+      slack:
+        channels:
+          - 'slack-test1'
+        statuses:
+          - RUNNING
+          - SUCCESS
+          - FAILURE
