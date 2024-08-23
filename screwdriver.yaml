@@ -5,7 +5,7 @@ shared:
  
 stages:
   sandbox:
-    requires: [ ~commit ]
+    requires: [ ~start ]
     description: Deploy sandbox and test
     jobs: [ sandbox-deploy, sandbox-e2e-test, sandbox-test ]
     teardown:
@@ -13,6 +13,8 @@ stages:
         - init: echo 'sandbox teardown'
  
 jobs:
+  start:
+    requires: [ ~commit ]
   sandbox-deploy:
     description: empty
   sandbox-e2e-test:
