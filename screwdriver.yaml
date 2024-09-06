@@ -38,7 +38,7 @@ jobs:
     steps:
       - echo: echo foo
   annotate3:
-    requires: annotate1
+    requires: annotate2
     annotations:
       screwdriver.cd/virtualJob: true
     steps:
