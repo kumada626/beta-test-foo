@@ -1,45 +1,12 @@
 # annotations:
 #   screwdriver.cd/chainPR: true
 shared:
-  image: node:20
+  image: node:24
   steps:
     - test: echo 'test'
  
-stages:
-  sandbox:
-    requires: [ ~start ]
-    description: Deploy sandbox and test
-    jobs: [ sandbox-deploy, sandbox-e2e-test, sandbox-test ]
-    teardown:
-      steps:
-        - init: echo 'sandbox teardown'
- 
 jobs:
-  start:
-    requires: [ ~commit ]
-  sandbox-deploy:
-    description: empty
-  sandbox-e2e-test:
-    requires: [ sandbox-deploy ]
-  sandbox-test:
-    requires: [ sandbox-deploy ]
-    steps:
-      - sleep: sleep 60
-  annotate1:
-    requires: [ ~commit, ~pr ]
-    annotations:
-      screwdriver.cd/virtualJob: true
-    steps:
-      - echo: echo foo
-  annotate2:
-    requires: annotate1
-    annotations:
-      screwdriver.cd/virtualJob: true
-    steps:
-      - echo: echo foo
-  annotate3:
-    requires: annotate1
-    annotations:
-      screwdriver.cd/virtualJob: true
-    steps:
-      - echo: echo foo
+  main:
+    requires: ~commit
+  closed-trigger:
+    requires: ~pr-closed:stable
