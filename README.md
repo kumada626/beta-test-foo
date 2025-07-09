@@ -1,2 +1,2 @@
 # beta-test
-test
+pr-closed-test
