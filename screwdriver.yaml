@@ -1,12 +1,20 @@
-# annotations:
-#   screwdriver.cd/chainPR: true
 shared:
   image: node:24
   steps:
-    - test: cat README.md
- 
+    - test: echo test
+
 jobs:
-  main:
-    requires: ~commit
-  closed-trigger:
-    requires: ~pr-closed:stable
+  a:
+    requires: [~pr]
+  b:
+    requires: [ ~a ]
+  c:
+    requires: [~pr:foo]
+  d:
+    requires: [~pr:bar]
+  e:
+    requires: []
+  f:
+    requires: []
+  g:
+    requires: [ ~f ]
