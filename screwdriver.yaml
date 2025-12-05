@@ -4,17 +4,8 @@ shared:
     - test: echo test
 
 jobs:
-  a:
-    requires: [~pr]
-  b:
-    requires: [ ~a ]
-  c:
-    requires: [~pr:foo]
-  d:
-    requires: [~pr:bar]
-  e:
-    requires: []
-  f:
-    requires: []
-  g:
-    requires: [ ~f ]
+  test:
+    requires: [~pr,~commit]
+    description: "This is a test job."
+  publish:
+    requires: [ test ]
