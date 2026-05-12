@@ -1,11 +1,42 @@
 shared:
   image: node:24
-  steps:
-    - test: echo test
+  environment:
+    SD_SKIP_REPOSITORY_CLONE: true
 
 jobs:
-  test:
-    requires: [~pr,~commit]
-    description: "This is a test job."
-  publish:
-    requires: [ test ]
+  success-notify:
+    requires: [ ~commit ]
+    steps:
+      - echo: echo 'SUCCESS'
+      - set: meta set foo "bar"
+
+  failure-and-fix-notify:
+    requires: [ ~commit ]
+    steps:
+      - echo: |
+          TARGET=`meta get message`
+          if [ "$TARGET" = "Hello" ]; then
+            echo 'FIXED'
+          else
+            echo 'FAILED'
+            exit 1
+          fi
+      - teardown-set: meta set message "Hello"
+
+  aborted-notify:
+    requires: [ ~commit ]
+    steps:
+      - echo: echo 'ABORTED'
+      - set: meta set bar "baz"
+
+  queued-notify:
+    requires: [ ~commit ]
+    steps:
+      - echo: echo 'QUEUED'
+      - set: meta set hoge "ho00"
+
+  running-notify:
+    requires: [ ~commit ]
+    steps:
+      - echo: echo 'RUNNING'
+      - set: meta set fuga "foo"
